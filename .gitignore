@@ -1,0 +1,9 @@
+*.iml
+/InstaCloneMobile.gradle
+/InstaCloneMobile/local.properties
+/InstaCloneMobile/.idea/workspace.xml
+/InstaCloneMobile/.idea/libraries
+/InstaCloneMobile.DS_Store
+/InstaCloneMobile/build
+/InstaCloneMobile/captures
+/InstaCloneMobile/.externalNativeBuild
