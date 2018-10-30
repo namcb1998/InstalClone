@@ -35,32 +35,6 @@ public class NewFeedActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        Toast.makeText(this, "OH LA LA", Toast.LENGTH_SHORT).show();
-        Button btnPost = findViewById(R.id.btn_post);
-
-        Intent intent = getIntent();
-        String status = intent.getStringExtra("status");
-        String image = intent.getStringExtra("image");
-        btnPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(NewFeedActivity.this, PostActivity.class);
-                startActivity(intent);
-            }
-        });
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case REQUEST_CODE_1: {
-                String messageReturn = data.getStringExtra("message_return");
-                Toast.makeText(this, "OH LA LA" + messageReturn, Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
 }
 

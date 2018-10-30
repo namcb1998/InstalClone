@@ -27,6 +27,7 @@ public class NewFeedPagerAdapter extends FragmentPagerAdapter{
                 return newFeedFragment;
             case 1:
                 CameraFragment cameraFragment = new CameraFragment();
+//                cameraFragment.takePhoto();
                 return cameraFragment;
             case 2:
                 UserFragment userFragment = new UserFragment();

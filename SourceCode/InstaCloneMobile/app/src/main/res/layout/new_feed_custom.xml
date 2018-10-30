@@ -7,6 +7,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,13 +49,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:orientation="vertical">
             <TextView
                 android:layout_marginTop="10dp"
                 android:gravity="left"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="2dp"
                 android:id="@+id/textview_title"
                 android:layout_width="375dp"
                 android:textSize="20sp"
@@ -63,10 +62,10 @@
                />
             <ImageView
                 android:id="@+id/image_newfeed"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#18ade4"
                 android:gravity="center"
+                android:scaleType="matrix"
                 android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout

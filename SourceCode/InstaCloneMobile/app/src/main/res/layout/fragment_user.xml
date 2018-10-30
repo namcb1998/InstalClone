@@ -1,150 +1,136 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.namcb1998.instaclonemobile.fragment.UserFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="177dp"
-            tools:layout_editor_absoluteY="58dp"
-            tools:ignore="MissingConstraints"/>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="177dp"
-            tools:layout_editor_absoluteY="91dp"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="259dp"
-            tools:layout_editor_absoluteY="91dp"
-            tools:ignore="MissingConstraints"/>
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="23dp"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="338dp"
-            tools:layout_editor_absoluteY="91dp"
-            tools:ignore="MissingConstraints"/>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="259dp"
-            tools:layout_editor_absoluteY="58dp"
-            tools:ignore="MissingConstraints"/>
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="338dp"
-            tools:layout_editor_absoluteY="58dp"
-            tools:ignore="MissingConstraints"/>
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="160dp"
-            android:layout_height="29dp"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="254dp"
-            tools:ignore="MissingConstraints"/>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="103dp"
-            android:layout_height="99dp"
-            android:src="@mipmap/ic_launcher"
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="142dp"
-            tools:ignore="MissingConstraints"/>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="137dp"
-            android:layout_height="41dp"
-            android:text="Button"
-            tools:layout_editor_absoluteX="210dp"
-            tools:layout_editor_absoluteY="164dp"
-            tools:ignore="MissingConstraints"/>
+        android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:layout_width="411dp"
-            android:layout_height="141dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="1dp"
-            tools:ignore="MissingConstraints">
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/background_color">
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="128dp"
+                android:layout_marginTop="50dp"
+                android:text="5"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="18dp"
+                android:layout_toStartOf="@+id/textView"
+                android:text="Post"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView2"
+                android:layout_alignBottom="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_marginStart="65dp"
+                android:text="follow"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView3"
+                android:layout_alignBottom="@+id/textView3"
+                android:layout_marginStart="14dp"
+                android:layout_toEndOf="@+id/textView3"
+                android:text="Like"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
         </RelativeLayout>
 
-        <TabHost
-            android:layout_width="409dp"
-            android:layout_height="355dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="304dp"
-            tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/textview_newfeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="50dp"
+            android:text="5"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="50dp"
+            android:layout_toLeftOf="@+id/textview_newfeed"
+            android:text="5"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="90dp"
+            android:src="@mipmap/ic_launcher"></ImageView>
 
-                <android.support.v4.view.ViewPager
-                    android:id="@android:id/tabcontent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="120dp"
+            android:background="#4568DC"
+            android:text="Follow"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
-                    <LinearLayout
-                        android:id="@+id/tab1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/img_avatar"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="0dp"
+            android:text="Quang Linh"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/tab2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_avatar"
+            android:layout_marginTop="100dp" />
 
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/tab3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                    </LinearLayout>
-                </android.support.v4.view.ViewPager>
-            </LinearLayout>
-        </TabHost>
-
-    </android.support.constraint.ConstraintLayout>
-</FrameLayout>
+        <FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="1200dp"
+            android:layout_below="@id/tabs" />
+    </RelativeLayout>
+</ScrollView>
