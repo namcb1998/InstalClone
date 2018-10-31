@@ -33,8 +33,8 @@ public class UserFragment extends Fragment {
     private void setupTabLayout() {
         this.galleryImageFragment = new GalleryImageFragment();
         this.listImageFragment = new ListImageFragment();
-        allTabs.addTab(allTabs.newTab().setText("ONE"),true);
-        allTabs.addTab(allTabs.newTab().setText("TWO"));
+        allTabs.addTab(allTabs.newTab().setIcon(R.drawable.grid),true);
+        allTabs.addTab(allTabs.newTab().setIcon(R.drawable.list));
     }
 
     private void bindWidgetsWithAnEvent()

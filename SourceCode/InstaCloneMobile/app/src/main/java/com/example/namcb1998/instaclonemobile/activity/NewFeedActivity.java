@@ -35,6 +35,9 @@ public class NewFeedActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.home);
+        tabLayout.getTabAt(2).setIcon(R.drawable.user);
     }
 }
 
