@@ -16,7 +16,18 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return response($posts, 201);
+        $jsonPost = json_decode(json_encode($posts), TRUE);
+        $postsList = array();
+
+
+        foreach ($jsonPost as $key => $value) {
+            $idPost = json_decode(json_encode($value))->id;
+            $comment = DB::table('comments')->where('id_post', $idPost)->get();
+            $like = DB::table('likes')->where('id_post', $idPost)->get();
+            array_push($postsList, [$value, "comments" => $comment, "likes" => $like]);
+        }
+
+        return response(json_encode($postsList), 201);
     }
 
     /**
@@ -58,12 +69,17 @@ class PostController extends Controller
     {
         $idUser = $request->id_user;
         $post = DB::table('posts')->where('id_user', $idUser)->get();
-        if (isset($post)) {
-            return response(json_encode($post), 201);
-        } else {
-            array_push($jsonLogin, ["message" => "failed"]);
-            return response($jsonLogin, 300);
+        $objectJsonPostArray = json_decode(json_encode($post));
+        $postsList = array();
+
+
+        foreach ($objectJsonPostArray as $key => $value) {
+            $idPost = json_decode(json_encode($value))->id;
+            $comment = DB::table('comments')->where('id_post', $idPost)->get();
+            $like = DB::table('likes')->where('id_post', $idPost)->get();
+            array_push($postsList, [$value, "comments" => $comment, "likes" => $like]);
         }
+        return response($postsList, 201);
     }
 
 

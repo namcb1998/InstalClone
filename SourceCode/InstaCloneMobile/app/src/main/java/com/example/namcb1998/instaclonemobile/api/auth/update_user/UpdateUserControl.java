@@ -1,9 +1,13 @@
-package com.example.namcb1998.instaclonemobile.api.auth.signup;
+package com.example.namcb1998.instaclonemobile.api.auth.update_user;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.util.Base64;
 
 import com.example.namcb1998.instaclonemobile.api.Config;
 import com.example.namcb1998.instaclonemobile.api.MainControl;
+import com.example.namcb1998.instaclonemobile.api.auth.signin.SignInControl;
+import com.example.namcb1998.instaclonemobile.api.auth.signin.SignInListenner;
 import com.example.namcb1998.instaclonemobile.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,50 +25,66 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class SignUpControl extends MainControl {
+public class UpdateUserControl extends MainControl {
     private OkHttpClient client = new OkHttpClient();
-    private String url = Config.BASE_URL + "User";
+    private String url = Config.BASE_URL + "User/updateUser";
 
-    public SignUpControl(Activity activity) {
+    public UpdateUserControl(Activity activity) {
         super(activity);
     }
 
 
-    public void signUp(final String username, final String password, final SignUpListenner signUpListenner) {
+    public void updateUser(final int idUser, final String display_name, final Bitmap avatar, final String email, final Integer gender, final Long birthDay, final String password, final UpdateUserListenner updateUserListenner) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Map<String, String> bodyMap = new HashMap<>();
-                bodyMap.put("username", username);
-                bodyMap.put("password", password);
+                bodyMap.put("id", String.valueOf(idUser));
+                if (display_name != null) {
+                    bodyMap.put("display_name", display_name);
+                }
+                if (email != null) {
+                    bodyMap.put("email", email);
+                }
+                if (gender != null) {
+                    bodyMap.put("gender", String.valueOf(gender));
+                }
+                if (birthDay != null) {
+                    bodyMap.put("birthDay", String.valueOf(birthDay));
+                }
+                if (password != null) {
+                    bodyMap.put("password", password);
+                }
+                if (avatar != null) {
+                    bodyMap.put("encode_string", getStringBase64Image(avatar));
+                }
+
                 Gson gson = new GsonBuilder().create();
                 String jsonString = gson.toJson(bodyMap);
 
                 RequestBody body = RequestBody.create(JSON, jsonString);
                 Request request = new Request.Builder()
-                        .url(SignUpControl.this.url)
+                        .url(UpdateUserControl.this.url)
                         .post(body)
                         .build();
                 Response response = null;
                 try {
-                    response = SignUpControl.this.client.newCall(request).execute();
+                    response = UpdateUserControl.this.client.newCall(request).execute();
                     String result = response.body().string();
                     if (response.code() == 201) {
-                        final User user = SignUpControl.this.getUserFromResult(result);
+                        final User user = UpdateUserControl.this.getUserFromResult(result);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                signUpListenner.onSuccessSignUp(user);
+                                updateUserListenner.onUpdateSuccess(user);
                             }
                         });
                     } else {
-                        final String message = new JSONArray(result).getJSONObject(0).getString("message");
+                        final String message = result;
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                if (message.contains("Duplicate entry")) {
-                                    signUpListenner.onFailedSignUp("Account " + username + " is already exist");
-                                }
+                                updateUserListenner.onFailed(message);
                             }
                         });
                     }
@@ -72,7 +93,7 @@ public class SignUpControl extends MainControl {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            signUpListenner.onFailedSignUp("Signup failed, check your internet connection");
+                            updateUserListenner.onFailed("Update failed, check your internet connection");
                         }
                     });
                 }
@@ -108,5 +129,12 @@ public class SignUpControl extends MainControl {
         user.setLink_avatar(link_avatar);
 
         return user;
+    }
+
+    private String getStringBase64Image(Bitmap bm) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+        byte[] b = baos.toByteArray();
+        return Base64.encodeToString(b, Base64.DEFAULT);
     }
 }

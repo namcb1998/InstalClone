@@ -11,6 +11,7 @@ import com.example.namcb1998.instaclonemobile.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -60,8 +61,7 @@ public class SubmitPostControl extends MainControl {
                             }
                         });
                     } else {
-                        JSONObject jsonObject = new JSONObject(result);
-                        final String message = jsonObject.getString("message");
+                        final String message = new JSONArray(result).getJSONObject(0).getString("message");
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

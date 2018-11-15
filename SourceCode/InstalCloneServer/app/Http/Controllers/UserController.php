@@ -70,6 +70,56 @@ class UserController extends Controller
         }
     }
 
+    public function updateUser(Request $request)
+    {
+        $display_name = $request->display_name;
+        $email = $request->email;
+        $gender = $request->gender;
+        $birthday = $request->birthday;
+        $password = $request->password;
+        $encode_string = $request->encode_string;
+
+        $id = $request->id;
+        $user = User::find($id);
+        if (isset($display_name)) {
+            $user->display_name = $display_name;
+        }
+        if (isset($email)) {
+            $user->email = $email;
+        }
+        if (isset($gender)) {
+            $user->gender = $gender;
+        }
+        if (isset($birthday)) {
+            $user->birthday = $birthday;
+        }
+        if (isset($password)) {
+            $user->password = $password;
+        }
+        if (isset($encode_string)) {
+            $image = base64_decode($encode_string);
+            $link_image = "avatars/" . $request->id_user . time();
+            file_put_contents($link_image, $image);
+            $user->link_avatar = $link_image;
+        }
+
+        $user->save();
+
+        return response($user, 201);
+    }
+
+    public function getUser(Request $request)
+    {
+        $stringArrayID = $request->list_id;
+        $arrayID = json_decode($stringArrayID);
+        $arrayUsers = array();
+        foreach ($arrayID as $key => $value) {
+            $user = User::find($value);
+            array_push($arrayUsers, $user);
+        }
+        return response($arrayUsers, 201);
+    }
+
     /**
      * Display the specified resource.
      *

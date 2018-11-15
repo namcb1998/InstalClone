@@ -3,8 +3,6 @@ package com.example.namcb1998.instaclonemobile.model;
 public class User {
     public static final int ADMIN = 0;
     public static final int USER = 1;
-    public static final int MALE = 0;
-    public static final int FEMALE = 1;
     private String username;
     private int id;
     private String password;

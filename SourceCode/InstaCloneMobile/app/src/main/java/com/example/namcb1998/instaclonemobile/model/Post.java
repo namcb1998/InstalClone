@@ -1,9 +1,10 @@
 package com.example.namcb1998.instaclonemobile.model;
 
+import java.util.List;
+
 public class Post {
     public static final int PRIVACY_PRIVATE = 0;
     public static final int PRIVACY_PUBLIC = 1;
-    public static final int PRIVACY_FOLLOW = 2;
 
     private int id;
     private int id_user;
@@ -11,6 +12,8 @@ public class Post {
     private String title;
     private int privacy;
     private String created_at;
+    private List<Comment> comments;
+    private List<Like> likes;
 
     public Post(int id, int id_user, String image_link, String title, int privacy, String created_at) {
         this.id = id;
@@ -24,16 +27,21 @@ public class Post {
     public Post() {
     }
 
-    public static int getPrivacyPrivate() {
-        return PRIVACY_PRIVATE;
+
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public static int getPrivacyPublic() {
-        return PRIVACY_PUBLIC;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
-    public static int getPrivacyFollow() {
-        return PRIVACY_FOLLOW;
+    public List<Like> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<Like> likes) {
+        this.likes = likes;
     }
 
     public int getId() {
